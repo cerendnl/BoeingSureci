@@ -1,0 +1,38 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:20");
+
+ //< [KillProcess] [comment="Ax32.exe"] [rows="[{"applicationExe":{"value":"Ax32.exe","type":"input"},"id":0}]"]  
+rpa.killProcess("Ax32.exe");
+
+ 
+rpa.echo("Execute Node:9");
+
+//< [Wait] [comment="3 sec."] [time="3;input"] 
+  rpa.sleep(3);
+
+rpa.echo("Execute Node:2");
+
+//< [OpenApplication] [comment="DynamicsAx"] [application=""C:\\Program Files (x86)\\Microsoft Dynamics AX\\50\\Client\Bin\\Ax32.exe";input"] [session="app;input"] 
+	App app = rpa.openApp("C:\\\\Program Files (x86)\\\\Microsoft Dynamics AX\\\\50\\\\Client\\Bin\\\\Ax32.exe");
+///>
+rpa.echo("Execute Node:7");
+QbitraRpaSettings.getScreen().type(Key.UP,Key.WIN);
+rpa.sleep(1);
+rpa.echo("Execute Node:4");
+
+//< [Click] [comment="satinalmaSiparisiAyrintilari"] [value=""images/satinalmaSiparisiAyrintilari.png";xpath"] 
+  rpa.click("images/satinalmaSiparisiAyrintilari.png");
+//>
+
+rpa.echo("Execute Node:5");
+
+//< [WaitImage] [comment="satinalmaSiparisiSayfasi"] [image=""images/satinalmaSiparisiSayfasi.png";image"] [timeout="60"] 
+    rpa.waitImage("images/satinalmaSiparisiSayfasi.png",60);
+///>
+rpa.echo("Execute Node:7");
+QbitraRpaSettings.getScreen().type(Key.UP,Key.WIN);
+rpa.sleep(1);

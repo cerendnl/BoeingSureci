@@ -1,0 +1,101 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:2");
+
+//< [DateTimeNow] [comment="nowDate"] [variable="nowDate;input"] 
+  LocalDateTime nowDate = LocalDateTime.now();
+///>
+
+rpa.echo("Execute Node:3");
+
+//< [DateTimeFormat] [comment="ay"] [source="nowDate;variable"] [pattern="MM"] [return="ay;input"] [format="custom"] 
+  String ay = DateTimeFormatter.ofPattern("MM").format(nowDate);
+
+rpa.echo("Execute Node:4");
+
+//< [Echo] [comment="ay"] [value="ay;variable"] 
+    rpa.echo(ay); 
+
+rpa.echo("Execute Node:14");
+
+//< [DateTimeFormat] [comment="yıl"] [source="nowDate;variable"] [pattern="YYYY"] [return="yil;input"] [format="custom"] 
+  String yil = DateTimeFormatter.ofPattern("YYYY").format(nowDate);
+
+rpa.echo("Execute Node:15");
+
+//< [ExistsFolder] [comment="yilFolder"] [path=""C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil;input"] [resultToVariable="true"] [resultVariable="yilFolder;input"] 
+boolean yilFolder =  rpa.isFileOrFolderExist("C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil);
+///>
+rpa.echo("Execute Node:13");
+
+ //< [Condition] [comment="bu yılın klasoru var mı ?"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"yilFolder","type":"variable"},"secondValueInput":{"value":"true","type":"input"},"id":0,"selected":"isequal"}]"] 
+ if((yilFolder == true))
+ {
+ 
+rpa.echo("Execute Node:11");
+
+//< [Echo] [comment=""klasor var""] [value=""klasor var";input"] 
+    rpa.echo("klasor var"); 
+
+}else{
+rpa.echo("Execute Node:18");
+
+//< [Echo] [comment=""klasor yok""] [value=""klasor yok";input"] 
+    rpa.echo("klasor yok"); 
+
+rpa.echo("Execute Node:17");
+
+//< [CreateFolder] [comment="yil klasoru oluştur"] [path=""C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil;input"] [overwrite="false"] [type="folder"] 
+rpa.createDirectory("C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil,false);
+
+}
+rpa.echo("Execute Node:6");
+
+//< [ExistsFolder] [comment="ayFolder"] [path=""C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay;input"] [resultToVariable="true"] [resultVariable="ayFolder;input"] 
+boolean ayFolder =  rpa.isFileOrFolderExist("C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay);
+///>
+rpa.echo("Execute Node:8");
+
+ //< [Condition] [comment="bu ayın klasoru var mı ?"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"ayFolder","type":"variable"},"secondValueInput":{"value":"true","type":"input"},"id":0,"selected":"isequal"}]"] 
+ if((ayFolder == true))
+ {
+ 
+rpa.echo("Execute Node:11");
+
+//< [Echo] [comment=""klasor var""] [value=""klasor var";input"] 
+    rpa.echo("klasor var"); 
+
+}else{
+rpa.echo("Execute Node:18");
+
+//< [Echo] [comment=""klasor yok""] [value=""klasor yok";input"] 
+    rpa.echo("klasor yok"); 
+
+rpa.echo("Execute Node:10");
+
+//< [CreateFolder] [comment="ay klasoru oluştur"] [path=""C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay;input"] [overwrite="false"] [type="folder"] 
+rpa.createDirectory("C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay,false);
+
+}
+rpa.echo("Execute Node:22");
+
+//< [ExistsFile] [comment="excelFile"] [path=""C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay+"\\"+ay+yil+".xlsx";input"] [resultToVariable="true"] [resultVariable="excelFile;input"] 
+boolean excelFile =  rpa.isFileOrFolderExist("C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay+"\\"+ay+yil+".xlsx");
+///>
+rpa.echo("Execute Node:20");
+
+ //< [Condition] [comment="excel var mı "] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"excelFile","type":"input"},"secondValueInput":{"value":"true","type":"input"},"id":0,"selected":"isequal"}]"] 
+ if((excelFile == true))
+ {
+ 
+}else{
+rpa.echo("Execute Node:12");
+
+//< [CreateExcel] [comment=""] [filename="ay+yil+".xlsx";input"] [directory=""C:\\Users\\robomail\\Desktop\\Projects\\LOG\\"+yil+"\\"+ay+"\\";input"] 
+  rpa.createExcelFile("C:\\\\Users\\\\robomail\\\\Desktop\\\\Projects\\\\LOG\\\\"+yil+"\\\\"+ay+"\\\\",ay+yil+".xlsx");
+///>
+
+}

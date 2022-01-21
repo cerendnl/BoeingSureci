@@ -1,0 +1,10 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:3");
+
+//< [OpenApplication] [comment=""] [application=""C:\\Program Files\\VMware\\VMware Tools\\VMwareResolutionSet.exe";file"] [session="app;input"] 
+	App app = rpa.openApp("C:\\\\Program Files\\\\VMware\\\\VMware Tools\\\\VMwareResolutionSet.exe");
+///>

@@ -1,0 +1,148 @@
+{
+  "imageoffset": [
+    {
+      "X": -8,
+      "Y": 8,
+      "filePath": "images/purchaceOrder.png",
+      "id": 1631539965197
+    },
+    {
+      "X": -11,
+      "Y": 11,
+      "filePath": "images/satinAlmaId.png",
+      "id": 1631709234350
+    },
+    {
+      "X": -15,
+      "Y": 8,
+      "filePath": "images/partiNumarasi.png",
+      "id": 1631709426490
+    },
+    {
+      "X": 2,
+      "Y": 25,
+      "filePath": "images/simdialQuantity.png",
+      "id": 1631710184281
+    },
+    {
+      "X": 3,
+      "Y": 23,
+      "filePath": "images/departman.png",
+      "id": 1631710382321
+    },
+    {
+      "X": -25,
+      "Y": -4,
+      "filePath": "images/fatura2.png",
+      "id": 1631711476976
+    },
+    {
+      "X": -29,
+      "Y": 35,
+      "filePath": "images/fatura3.png",
+      "id": 1631711531496
+    },
+    {
+      "X": -1,
+      "Y": 8,
+      "filePath": "images/deftereNakilTarihi.png",
+      "id": 1631711794863
+    },
+    {
+      "X": -2,
+      "Y": 8,
+      "filePath": "images/faturaNo.png",
+      "id": 1631711831282
+    },
+    {
+      "X": 76,
+      "Y": -6,
+      "filePath": "images/miktarSimdiAl.png",
+      "id": 1631713559812
+    },
+    {
+      "X": 73,
+      "Y": 1,
+      "filePath": "images/toplamlarFaturaTutari.png",
+      "id": 1631713954984
+    },
+    {
+      "X": -55,
+      "Y": 1,
+      "filePath": "images/btnTamam.png",
+      "id": 1631777167484
+    },
+    {
+      "X": 40,
+      "Y": 49,
+      "filePath": "images/guncellemeIptalButonYes.png",
+      "id": 1634039827834
+    },
+    {
+      "X": 0,
+      "Y": 9,
+      "filePath": "images/maliTarih.png",
+      "id": 1636037785842
+    },
+    {
+      "X": -7,
+      "Y": 13,
+      "filePath": "images/maddeKoduFiltre.png",
+      "id": 1636095371252
+    },
+    {
+      "X": -1,
+      "Y": 10,
+      "filePath": "images/partiNoFiltre.png",
+      "id": 1636095867376
+    },
+    {
+      "X": -18,
+      "Y": 10,
+      "filePath": "images/girisFiltre.png",
+      "id": 1636098907951
+    },
+    {
+      "X": 3,
+      "Y": 10,
+      "filePath": "images/miktarFiltre.png",
+      "id": 1636102850423
+    },
+    {
+      "X": -4,
+      "Y": 22,
+      "filePath": "images/departmanKodu.png",
+      "id": 1636463045921
+    },
+    {
+      "X": -15,
+      "Y": 9,
+      "filePath": "images/nh4gt.png",
+      "id": 1637150303998
+    },
+    {
+      "X": -5,
+      "Y": 25,
+      "filePath": "images/satirDurumuAcikSiparis.png",
+      "id": 1637156043618
+    },
+    {
+      "X": -15,
+      "Y": 9,
+      "filePath": "images/faturaNoFiltre.png",
+      "id": 1637238892484
+    },
+    {
+      "X": -2,
+      "Y": 16,
+      "filePath": "images/fisNoFiltre.png",
+      "id": 1637239002098
+    },
+    {
+      "X": 150,
+      "Y": 50,
+      "filePath": "images/deftereNakildekiHata.png",
+      "id": 1638369991532
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:2");
+
+ //< [GetEnvironment] [comment="env"] [rows="[{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":0},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":1},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":2},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":3},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":4},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":5},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":6},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":7},{"firtsValueInput":{"value":"quantity","type":"input"},"secondValueInput":{"value":"UnitQty","type":"input"},"id":8}]"] 
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+String quantity= rpa.getEnvironmentVariable("UnitQty");
+
+ 
+rpa.echo("Execute Node:3");
+String uom= rpa.getEnvironmentVariable("uom","EA");
+String unitAmt= rpa.getEnvironmentVariable("unitAmt","29.71");
+String amount= rpa.getEnvironmentVariable("amount","29.71");
+String partiNumarasi= rpa.getEnvironmentVariable("partiNumarası","BACR15GA5-14B");
+String ProcessCode = rpa.getEnvironmentVariable("ProcessCode", "123123");
+String partiNo = rpa.getEnvironmentVariable("partiNo", "M21021958");
+
+// String[] purchaseSplit= purchaseOrder.split("-");
+// rpa.echo(purchaseSplit[2]);
+
+String[] SplitDate = invoiceDate.split("T");
+String InvoiceTarih = SplitDate[0];
+String[] StringInvoiceDate = InvoiceTarih.split("-");
+
+invoiceDate = StringInvoiceDate[2] + "-" + StringInvoiceDate[1] + "-" + StringInvoiceDate[0];
+
+
+
+
+rpa.echo("Execute Node:4");
+
+ //< [Variable] [comment="var"] [rows="[{"firtsValueInput":{"value":"departmanKodu","type":"input"},"secondValueInput":{"value":"\"AD340101\"","type":"input"},"id":0,"selected":"String"}]"] 
+String departmanKodu="AD340101";
+
+ 

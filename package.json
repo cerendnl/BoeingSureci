@@ -1,0 +1,13 @@
+{
+  "name": "BoeingSureci",
+  "main": "main.qb",
+  "version": "0.0.37",
+  "studio_version": "3.3.6",
+  "imports": [
+    "com.google.gson.*",
+    "java.util.*",
+    "java.text.*"
+  ],
+  "config": "Debug",
+  "arguments": "chrome-disabled debug"
+}

@@ -1,0 +1,35 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:7");
+QbitraRpaSettings.getScreen().type(Key.UP,Key.WIN);
+rpa.sleep(1);
+rpa.echo("Execute Node:9");
+
+//< [Type] [comment="purchaceOrder gir"] [value=""images/satinAlmaId.png.targetOffset(-11,11)";image"] [as="PONum;input"] 
+    rpa.type("images/satinAlmaId.png.targetOffset(-11,11)",PONum);
+
+rpa.echo("Execute Node:6");
+
+//< [Keyboard] [comment="enter"] [0_sleep="1"] [1_special="Key.ENTER"] [2_sleep="1"]  
+	rpa.sleep(1);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(1);
+///>
+rpa.echo("Execute Node:21");
+
+//< [DoubleClick] [comment="partiNo"] [value=""images/nh4gt.png.targetOffset(-15,9)";image"] 
+  rpa.doubleClick("images/nh4gt.png.targetOffset(-15,9)");
+//>
+
+rpa.echo("Execute Node:20");
+
+//< [Keyboard] [comment="enter"] [0_sleep="0.5"] [1_variable="partiNo"] [2_sleep="0.5"] [3_special="Key.ENTER"] [4_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardSend(String.valueOf(partiNo));
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(0.5);
+///>

@@ -1,0 +1,205 @@
+
+
+//< [Start] comment="Start Flow"  timeout="20;input"
+    QbitraRpaSettings.DefaultTimeOut=20;
+  ///>
+rpa.echo("Execute Node:5");
+
+//< [Click] [comment="stokButon click"] [value=""images/stokButon.png";image"] 
+  rpa.click("images/stokButon.png");
+//>
+
+rpa.echo("Execute Node:4");
+
+//< [Keyboard] [comment="hareketler tikla"] [0_sleep="1"] [1_special="Key.DOWN"] [2_sleep="0.5"] [3_sleep="0.5"] [4_special="Key.ENTER"]  
+	rpa.sleep(1);
+	rpa.keyboardSend(Key.DOWN);
+	rpa.sleep(0.5);
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+///>
+rpa.echo("Execute Node:7");
+
+//< [WaitImage] [comment="hareketler"] [image=""images/hareketler.png";image"] [timeout="60"] 
+    rpa.waitImage("images/hareketler.png",60);
+///>
+rpa.echo("Execute Node:17");
+
+//< [Keyboard] [comment="excel'i aktar"] [0_sleep="3"] [1_sleep="0.5"] [2_special="ctrl+e"] [3_sleep="0.5"]  
+	rpa.sleep(3);
+	rpa.sleep(0.5);
+	rpa.keyboardWrite("ctrl+e");
+	rpa.sleep(0.5);
+///>
+rpa.echo("Execute Node:18");
+
+//< [Click] [comment="excel"] [value=""images/excelSimgesi.png";image"] 
+  rpa.click("images/excelSimgesi.png");
+//>
+
+rpa.echo("Execute Node:25");
+
+//< [DeleteFile] [comment="delete Book1.xlsx"] [path=""C:\\Users\\robomail\\Documents\\Book1.xlsx";file"] [type="file"] 
+  rpa.deleteFileOrFolder("C:\\Users\\robomail\\Documents\\Book1.xlsx");
+///>
+rpa.echo("Execute Node:19");
+
+//< [Keyboard] [comment="excel'i aktar"] [0_sleep="1"] [1_special="alt+f4"] [2_sleep="0.5"]  
+	rpa.sleep(1);
+	rpa.keyboardWrite("alt+f4");
+	rpa.sleep(0.5);
+///>
+rpa.echo("Execute Node:21");
+
+//< [Click] [comment="excel kayit yeri secimi"] [value=""images/kayitYeriSecimi.png";image"] 
+  rpa.click("images/kayitYeriSecimi.png");
+//>
+
+rpa.echo("Execute Node:22");
+
+//< [Wait] [comment="1 sec."] [time="1;input"] 
+  rpa.sleep(1);
+
+rpa.echo("Execute Node:23");
+
+//< [Click] [comment="documents.png"] [value=""images/documents.png";image"] 
+  rpa.click("images/documents.png");
+//>
+
+rpa.echo("Execute Node:24");
+
+//< [Keyboard] [comment="tab and save"] [0_sleep="1"] [1_special="Key.TAB"] [2_sleep="0.5"] [3_special="Key.TAB"] [4_sleep="0.5"] [5_special="Key.ENTER"] [6_sleep="0.5"]  
+	rpa.sleep(1);
+	rpa.keyboardSend(Key.TAB);
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.TAB);
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(0.5);
+///>
+rpa.echo("Execute Node:26");
+
+//< [OpenExcel] [comment="Book 1 excel_session"] [session="excel_session;input"] [file=""C:\\Users\\robomail\\Documents\\Book1.xlsx";file"] [password=";"] [isSpecificSheetName="false"] [isModeUsage="true"] [mode="write_only"] [sheet=";"] 
+ExcelSession excel_session = rpa.openExcel("C:\\Users\\robomail\\Documents\\Book1.xlsx","","write_only");
+///>
+
+rpa.echo("Execute Node:27");
+
+//< [FetchExcelColumnValues] [comment="stokHareketlerExcelData"] [session="excel_session"] [columns=";"] [startRowNumber="1;input"]  [isHeader="true"] [resultToVariable="true"] [list="stokHareketlerExcelData;input"] 
+JsonArray stokHareketlerExcelData = rpa.fetchExcelColumnValues(excel_session,"",true,1);
+///>
+
+rpa.echo("Execute Node:31");
+int counter = 0;
+rpa.echo("Execute Node:28");
+
+//< [LoopByItem] [comment="item in stokHareketlerExcelData"] [element="item"] [list="stokHareketlerExcelData"] [giris_member="Giriş"] [tesis_member="Tesis"] [miktar_member="Miktar"]   
+for (JsonElement item:stokHareketlerExcelData){
+String giris = item.getAsJsonObject().get("Giriş") != null ? item.getAsJsonObject().get("Giriş").getAsString() : ""; 
+String tesis = item.getAsJsonObject().get("Tesis") != null ? item.getAsJsonObject().get("Tesis").getAsString() : ""; 
+String miktar = item.getAsJsonObject().get("Miktar") != null ? item.getAsJsonObject().get("Miktar").getAsString() : ""; 
+
+
+rpa.echo("Execute Node:60");
+rpa.echo("giris: " + giris);
+rpa.echo("tesis: " + tesis);
+rpa.echo("miktar: " + miktar);
+rpa.echo("quantity" + quantity);
+rpa.echo("Execute Node:36");
+
+ //< [Condition] [comment="toplam satırı varsa counterı artırma"] [combine="ANY"] [rows="[{"firtsValueInput":{"value":"tesis","type":"input"},"secondValueInput":{"value":"\"Toplam\"","type":"input"},"id":0,"selected":"isequalforstring"}]"] 
+ if((tesis.equals("Toplam")))
+ {
+ 
+}else{
+rpa.echo("Execute Node:31");
+counter++;
+rpa.echo("Execute Node:44");
+
+ //< [Condition] [comment="if giris is alındı ve miktar eşitse"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"giris","type":"variable"},"secondValueInput":{"value":"\"Alındı\"","type":"input"},"id":0,"selected":"isequalforstring"},{"firtsValueInput":{"value":"miktar","type":"input"},"secondValueInput":{"value":"quantity","type":"variable"},"id":1,"selected":"isequalforstring"}]"] 
+ if((giris.equals("Alındı"))&&(miktar.equals(quantity)))
+ {
+ 
+rpa.echo("Execute Node:39");
+
+//< [Keyboard] [comment="stok hareketleri kapat"] [0_sleep="0.5"] [1_special="Key.ESC"] [2_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ESC);
+	rpa.sleep(0.5);
+///>rpa.echo("Execute Node:49");
+
+ //< [Condition] [comment="simdi al "] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"\"images/simdialQuantity.png.targetOffset(2,25)\"","type":"input"},"secondValueInput":{"value":"","type":""},"id":0,"selected":"isvisible"}]"] 
+ if((rpa.isPresent("images/simdialQuantity.png.targetOffset(2,25)")))
+ {
+ 
+rpa.echo("Execute Node:54");
+
+//< [DoubleClick] [comment="simdi al"] [value=""images/simdialQuantity.png.targetOffset(2,25)";image"] 
+  rpa.doubleClick("images/simdialQuantity.png.targetOffset(2,25)");
+//>
+
+rpa.echo("Execute Node:50");
+
+//< [Keyboard] [comment=""] [0_sleep="0.5"] [1_variable="quantity"] [2_sleep="0.5"] [3_special="Key.ENTER"] [4_sleep="0.5"]  
+	rpa.sleep(0.5);
+	rpa.keyboardSend(String.valueOf(quantity));
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(0.5);
+///>
+}else{
+}
+rpa.echo("Execute Node:57");
+
+//< [Click] [comment="departman"] [value=""images/departmanKodu.png.targetOffset(-4,22)";image"] 
+  rpa.click("images/departmanKodu.png.targetOffset(-4,22)");
+//>
+
+rpa.echo("Execute Node:59");
+
+//< [Click] [comment=""] [value=""images/departmanKodu.png.targetOffset(-4,22)";image"] 
+  rpa.click("images/departmanKodu.png.targetOffset(-4,22)");
+//>
+
+rpa.echo("Execute Node:56");
+
+//< [Keyboard] [comment="enter"] [0_sleep="1"] [1_variable="departmanKodu"] [2_sleep="0.5"] [3_special="Key.ENTER"] [4_sleep="0.5"]  
+	rpa.sleep(1);
+	rpa.keyboardSend(String.valueOf(departmanKodu));
+	rpa.sleep(0.5);
+	rpa.keyboardSend(Key.ENTER);
+	rpa.sleep(0.5);
+///>
+}else{
+rpa.echo("Execute Node:20");
+
+ //< [KillProcess] [comment="Ax32.exe"] [rows="[{"applicationExe":{"value":"Ax32.exe","type":"input"},"id":0}]"]  
+rpa.killProcess("Ax32.exe");
+
+ 
+}
+}
+}rpa.echo("Execute Node:42");
+
+ //< [Condition] [comment="counter > 1"] [combine="ALL"] [rows="[{"firtsValueInput":{"value":"counter","type":"input"},"secondValueInput":{"value":"1","type":"input"},"id":0,"selected":"greaterthan"}]"] 
+ if((counter > 1))
+ {
+ 
+rpa.echo("Execute Node:43");
+
+//< [CallAPIWithForm] [comment=""] [method="POST"] [url=""http://172.23.27.18:8000/hype/webhook/6/stokhatawebhook/stok";input"] [variablename="apiResponse;input"] [variabletype="String"] [body="[{"firtsValueInput":{"value":"PONum","type":"input"},"secondValueInput":{"value":"PONum","type":"input"},"id":0}]"] [header="[{"firtsValueInput":{"value":"Content-Type","type":"input"},"secondValueInput":{"value":"\"application/json\"","type":"input"},"id":0}]"] 
+    HashMap<String,String> _u3DqP =   new HashMap<String, String>();
+    HashMap<String,String> _mDJVA = new HashMap<String, String>();
+    _u3DqP.put("PONum",PONum);
+_mDJVA.put("Content-Type","application/json");
+
+    String apiResponse = rpa.callApiWithForm("POST","http://172.23.27.18:8000/hype/webhook/6/stokhatawebhook/stok",_u3DqP,_mDJVA);
+
+rpa.echo("Execute Node:63");
+
+//<[Exit] [comment="exit code is 0"] [exitcode="0;input"] 
+  rpa.quit();
+  System.exit(0);
+
+}else{
+}
